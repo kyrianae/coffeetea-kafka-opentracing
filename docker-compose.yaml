@@ -1,0 +1,9 @@
+version: "0.1"
+
+
+
+services:
+  buy:
+    build: .
+    dockerfile: buy.dockerfile
+    container_name: coffee-buy
