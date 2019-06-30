@@ -36,7 +36,7 @@ def init_tracer(service):
                 'param': 1,
             },
             'local_agent': {
-                'reporting_host': "127.0.0.1",
+                'reporting_host': "172.17.0.1",
                 'reporting_port': 6831,
             },
             'logging': True,
@@ -47,7 +47,7 @@ def init_tracer(service):
     return config.initialize_tracer()
 
 
-clientinflux= InfluxDBClient('localhost', 8086, 'root', 'root', 'example')
+clientinflux= InfluxDBClient('172.17.0.1', 8086, 'root', 'root', 'example')
 
 clientinflux.create_database('example')
 

@@ -18,19 +18,6 @@ from flask import Flask
 from flask import request
 import json
 from flask_cors import CORS
-from data import product as Product
-from common import trace
-from sentinelsat.sentinel import SentinelAPI, read_geojson, geojson_to_wkt
-from datetime import date
-import datetime
-# from opencensus.trace.tracer import Tracer
-# from opencensus.trace import time_event as time_event_module
-# from opencensus.ext.zipkin.trace_exporter import ZipkinExporter
-# from opencensus.ext.prometheus.stats_exporter import PrometheusStatsExporter
-# from opencensus.trace.samplers import always_on
-# from opencensus.trace import status
-
-
 from jaeger_client import Config
 
 from opentracing import Format
@@ -77,7 +64,7 @@ total=0
 client=0
 coffe_in_progress=0
 tea_in_progress=0
-root = 'http://127.0.0.1'
+root = 'http://172.17.0.1'
 fill_coffee_in_progress = False
 fill_water_in_progress = False
 fill_tea_in_progress = False

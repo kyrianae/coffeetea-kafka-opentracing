@@ -6,3 +6,7 @@ RUN pip3 install kafka-python
 RUN pip3 install jaeger-client
 RUN pip3 install urllib3
 RUN pip3 install requests
+RUN pip3 install zipkin
+RUN pip3 install influxdb
+
+COPY code code

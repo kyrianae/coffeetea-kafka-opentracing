@@ -42,7 +42,7 @@ tracer=init_tracer('buy')
 app = Flask(__name__)
 CORS(app)
 
-root = 'http://127.0.0.1'
+root = 'http://172.17.0.1'
 
 bootstraps = "kafka-1:19092,kafka-2:29092,kafka-3:39092"
 topic = 'order'

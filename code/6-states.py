@@ -18,7 +18,7 @@ import random
 from multiprocessing.dummy import Pool as ThreadPool
 
 nb_client=50
-root = 'http://127.0.0.1:5003'
+root = 'http://172.17.0.1:5003'
 
 def call_api(path, header):
     global root
@@ -27,7 +27,7 @@ def call_api(path, header):
     result.raise_for_status()
     return result
 
-client = InfluxDBClient('localhost', 8086, 'root', 'root', 'example')
+client = InfluxDBClient('172.17.0.1', 8086, 'root', 'root', 'example')
 
 client.create_database('example')
 

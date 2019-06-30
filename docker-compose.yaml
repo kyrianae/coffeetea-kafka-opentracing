@@ -1,9 +1,87 @@
-version: "0.1"
-
-
-
+version: "2"
 services:
+  datas:
+    image: local/coffee:0.1
+    command: python ./code/0-datas.py
+    ports: 
+    - "5003:5003"
+    networks:
+      - db
+      - kafka
+      - opentracing
+
   buy:
-    build: .
-    dockerfile: buy.dockerfile
-    container_name: coffee-buy
+    image: local/coffee:0.1
+    hostname: buy
+    command: python ./code/1-buy.py
+    ports: 
+    - "5000:5000"
+    networks:
+      - db
+      - kafka
+      - opentracing
+    # depends_on: 
+    #   - kafka-1
+    #   - kafka-2
+    #   - kafka-3
+
+  prepare:
+    image: local/coffee:0.1
+    command: python ./code/11-prepare.py
+    ports: 
+    - "5004:5004"
+    networks:
+      - db
+      - kafka
+      - opentracing
+
+  produce:
+    image: local/coffee:0.1
+    command: python ./code/2-produce.py
+    ports: 
+    - "5001:5001"
+    networks:
+      - db
+      - kafka
+      - opentracing
+
+  bill:
+    image: local/coffee:0.1
+    command: python ./code/3-bill.py
+    ports: 
+    - "5002:5002"
+    networks:
+      - db
+      - kafka
+      - opentracing
+
+  client:
+    image: local/coffee:0.1
+    command: python ./code/5-drinkClient.py
+    ports: 
+    - "5005:5005"
+    networks:
+      - db
+      - kafka
+      - opentracing
+
+  states:
+    image: local/coffee:0.1
+    command: python ./code/6-states.py
+    ports: 
+    - "5006:5006"
+    networks:
+      - db
+      - kafka
+      - opentracing
+
+networks:
+    db:
+      external:
+        name: dbdashboard_dbdash
+    kafka:
+      external:
+        name: apachekafka_backends
+    opentracing:
+      external:
+        name: jaeger_opentracing

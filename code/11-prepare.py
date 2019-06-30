@@ -39,7 +39,7 @@ def init_tracer(service):
                 'param': 1,
             },
             'local_agent': {
-                'reporting_host': "127.0.0.1",
+                'reporting_host': "172.17.0.1",
                 'reporting_port': 6831,
 
             },
@@ -59,7 +59,7 @@ tracer=init_tracer('buy')
 app = Flask(__name__)
 CORS(app)
 
-root = 'http://127.0.0.1'
+root = 'http://172.17.0.1'
 
 def gett():
     return str(time.time())

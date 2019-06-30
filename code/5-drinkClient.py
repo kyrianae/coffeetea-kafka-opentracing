@@ -19,7 +19,7 @@ from opentracing import Format
 from kafka import KafkaProducer
 
 nb_client = 1
-root = 'http://127.0.0.1:5000'
+root = 'http://172.17.0.1:5000'
 drinks = ['coffee', 'tea']
 means_of_payment = ['gold', 'card']
 energy = {
@@ -39,7 +39,7 @@ def init_tracer(service):
                 'param': 1,
             },
             'local_agent': {
-                'reporting_host': "127.0.0.1",
+                'reporting_host': "172.17.0.1",
                 'reporting_port': 6831,
             },
             'logging': True,
